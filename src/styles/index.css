@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* centrer le contenu de l'app */
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem; /* réduit le padding pour mieux occuper l'écran */
+    background: #f8fafc;
+    box-sizing: border-box;
+    width: 100%; /* s'assurer que le container prend toute la largeur */
+}
+
+.app-inner {
+    width: 100%;
+    max-width: none; /* permet d'occuper toute la largeur de l'écran */
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: stretch; /* étire les enfants pour éviter chevauchement */
+    box-sizing: border-box;
+    padding: 0; /* laisser les composants gérer leur propre padding */
+}
+
+/* forcer les enfants directs à prendre toute la largeur disponible
+   évite que des composants centrés (ex: calendar, navbar) se chevauchent */
+.app-inner > * {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* petites améliorations responsives */
+@media (min-width: 1200px) {
+    .app-container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    /* si vous souhaitez limiter visuellement la largeur sur très grands écrans,
+       décommentez la ligne suivante et ajustez la valeur */
+    /* .app-inner { max-width: 1200px; margin: 0 auto; } */
+}
+
+/* garder l'affichage lisible sur écrans très étroits */
+@media (max-width: 420px) {
+    .app-container { padding: 0.5rem; }
+    .app-inner { gap: 0.75rem; }
+}
