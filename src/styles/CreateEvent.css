@@ -1,91 +1,190 @@
+/* Overlay */
 .ce-overlay {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(2,6,23,0.45);
-    z-index: 1200;
-    padding: 1rem;
-    box-sizing: border-box;
+	position: fixed;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	background: rgba(3, 10, 27, 0.5);
+	z-index: 1100;
 }
 
+/* Modal principal */
 .ce-modal {
-    width: 100%;
-    max-width: 480px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(2,6,23,0.2);
-    padding: 16px;
-    box-sizing: border-box;
+	background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+	border-radius: 12px;
+	width: min(780px, 96vw);
+	/* Ne pas dépasser la fenêtre : on limite la hauteur et on autorise le scroll interne */
+	max-height: calc(100vh - 48px);
+	overflow: auto;
+	box-shadow: 0 12px 40px rgba(5, 20, 40, 0.2);
+	border: 1px solid rgba(10, 25, 47, 0.06);
+	display: flex;
+	flex-direction: column;
+	padding: 14px;
+	gap: 8px;
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
+/* Header */
 .ce-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 6px 4px;
+	border-bottom: 1px solid rgba(10, 25, 47, 0.04);
+	margin-bottom: 8px;
 }
-.ce-header h3 { margin: 0; font-size: 1.05rem; }
-
+.ce-header h3 {
+	margin: 0;
+	font-size: 1.05rem;
+	color: #0b2540;
+}
 .ce-close {
-    border: none;
-    background: transparent;
-    font-size: 1.1rem;
-    cursor: pointer;
+	background: transparent;
+	border: none;
+	font-size: 18px;
+	line-height: 1;
+	cursor: pointer;
+	padding: 6px 8px;
+	color: #22333b;
+	border-radius: 6px;
+}
+.ce-close:hover {
+	background: rgba(16, 42, 67, 0.04);
 }
 
-.ce-form { display: flex; flex-direction: column; gap: 8px; }
-
-.ce-label { display: flex; flex-direction: column; font-size: 0.9rem; color: #0f172a; gap: 6px; }
-.ce-input, .ce-textarea {
-    padding: 8px 10px;
-    border-radius: 8px;
-    border: 1px solid #e6e9ef;
-    font-size: 0.95rem;
-    box-sizing: border-box;
+/* Form layout */
+.ce-form {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding: 4px; /* espace interne pour le scroll */
 }
-.ce-textarea { min-height: 80px; resize: vertical; }
 
+/* Labels & inputs */
+.ce-label {
+	display: flex;
+	flex-direction: column;
+	font-size: 0.92rem;
+	color: #102a43;
+	gap: 6px;
+}
+.ce-input,
+.ce-textarea,
+.ce-fieldset input[type="time"],
+.ce-fieldset input[type="date"] {
+	padding: 8px 10px;
+	border-radius: 8px;
+	border: 1px solid rgba(16, 42, 67, 0.06);
+	background: #fff;
+	font-size: 0.95rem;
+	outline: none;
+}
+.ce-input:focus,
+.ce-textarea:focus {
+	box-shadow: 0 6px 18px rgba(51, 102, 255, 0.06);
+	border-color: rgba(51, 102, 255, 0.18);
+}
+
+/* Textarea */
+.ce-textarea {
+	min-height: 100px;
+	resize: vertical;
+}
+
+/* Fieldset minor styles */
+.ce-fieldset {
+	border: 1px solid rgba(16, 42, 67, 0.04);
+	padding: 10px;
+	border-radius: 8px;
+	background: rgba(250, 252, 255, 0.6);
+}
+.ce-fieldset legend {
+	font-size: 0.9rem;
+	padding: 0 6px;
+}
+
+/* Actions: sticky en bas du modal pour rester accessibles lors du scroll */
 .ce-actions {
-    display: flex;
-    gap: 8px;
-    justify-content: flex-end;
-    margin-top: 6px;
+	display: flex;
+	gap: 8px;
+	justify-content: flex-end;
+	padding: 10px;
+	margin-top: 8px;
+	border-top: 1px solid rgba(10, 25, 47, 0.03);
+	/* fond léger pour que les boutons restent lisibles quand on scroll */
+	position: sticky;
+	bottom: 0;
+	background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.95));
 }
 
+/* Buttons */
 .ce-btn {
-    padding: 8px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    border: none;
-    font-weight: 600;
-}
-.ce-btn--ghost {
-    background: transparent;
-    border: 1px solid #e6e9ef;
-    color: #0f172a;
+	padding: 8px 12px;
+	border-radius: 8px;
+	border: none;
+	font-weight: 600;
+	cursor: pointer;
 }
 .ce-btn--primary {
-    background: #111827;
-    color: #fff;
+	background: #3366ff;
+	color: #fff;
+	box-shadow: 0 8px 20px rgba(51, 102, 255, 0.12);
+}
+.ce-btn--primary:hover {
+	transform: translateY(-2px);
+}
+.ce-btn--ghost {
+	background: transparent;
+	color: #102a43;
+	border: 1px solid rgba(16, 42, 67, 0.06);
 }
 
-/* petit indicateur d'événement dans le calendrier */
-.cal-event-dot {
-    width: 8px;
-    height: 8px;
-    background: #ef4444;
-    border-radius: 50%;
-    display: inline-block;
-    margin-left: 6px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.12);
-    align-self: center;
+/* Image previews */
+.ce-img-preview { max-width:100%; border-radius:8px; margin-top:8px; border:1px solid rgba(10,25,47,0.04); }
+
+/* color picker improved */
+.ce-color-row { display:flex; align-items:center; gap:8px; }
+.ce-color-row input[type="color"] {
+	width:44px; height:36px; border:none; border-radius:8px; padding:0; cursor:pointer; appearance:none;
+}
+.ce-color-swatch { width:28px; height:28px; border-radius:6px; border:1px solid rgba(10,25,47,0.06); box-shadow:0 2px 8px rgba(10,25,47,0.06) inset; }
+
+/* Small controls layout (slots/options) */
+.ce-form > div[style*="display: flex"] {
+	align-items: center;
+}
+.ce-form .ce-btn.ce-btn--ghost {
+	padding: 6px 8px;
+	font-size: 0.85rem;
 }
 
-/* adapter modal sur petits écrans */
-@media (max-width: 420px) {
-    .ce-modal { max-width: 100%; padding: 12px; }
-    .ce-actions { flex-direction: column-reverse; gap: 6px; }
-    .ce-btn { width: 100%; }
+/* Improve readability on small screens */
+@media (max-width: 480px) {
+	.ce-modal {
+		width: 96vw;
+		padding: 10px;
+		max-height: calc(100vh - 20px);
+	}
+	.ce-actions {
+		padding: 10px 6px;
+	}
+	.ce-header h3 { font-size: 1rem; }
+	.ce-input, .ce-textarea { font-size: 0.95rem; }
+}
+
+/* color input nicer */
+.ce-label input[type="color"], .ce-input[type="color"] {
+	width: 44px;
+	height: 36px;
+	padding: 0;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	overflow: hidden;
+	background: transparent;
+	/* remove default inner padding in some browsers */
+	appearance: none;
 }

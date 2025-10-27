@@ -1,5 +1,5 @@
 .cal-card {
-    max-width: 50%;
+    width: 50%;
     min-width: 390px;
     background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
     border-radius: 12px;
@@ -145,4 +145,56 @@
     .cal-btn { width: 32px; height: 32px; }
     .cal-day { font-size: 0.95rem; }
     .cal-cell { min-height: 76px; }
+}
+
+/* top-level app layout: calendar (left) + right panel */
+.app-layout {
+	display: flex;
+	gap: 16px;
+	height: calc(100vh - 24px); /* correspond à usage JS */
+	align-items: stretch;
+	box-sizing: border-box;
+	padding: 12px;
+}
+
+/* left calendar: full height, scroll if needed */
+.cal-left {
+	height: 87%;
+	overflow: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+/* container des petits points d'événements */
+.cal-event-dots {
+	display: flex;
+	gap: 4px;
+	margin-top: 6px;
+	justify-content: center;
+	align-items: center;
+}
+
+/* point de couleur */
+.cal-event-dot {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	display: inline-block;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+	border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* indicateur +n */
+.cal-event-dot--more {
+	min-width: 18px;
+	height: 18px;
+	font-size: 10px;
+	line-height: 18px;
+	border-radius: 9px;
+	background: rgba(0,0,0,0.06);
+	color: #0b2540;
+	padding: 0 4px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 }

@@ -1,0 +1,109 @@
+/* Conteneur externe (positionné via inline-style dans le composant) */
+.popover-wrapper {
+	/* rien de spécifique ici, la position vient de l'inline style */
+}
+
+/* Boîte du popover */
+.popover {
+	background: linear-gradient(180deg, #ffffff 0%, #fbfbfd 100%);
+	border-radius: 8px;
+	box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12), 0 2px 6px rgba(15, 23, 42, 0.06);
+	border: 1px solid rgba(15, 23, 42, 0.06);
+	min-width: 200px;
+	overflow: visible;
+	transition: transform 120ms ease, opacity 120ms ease;
+	transform-origin: top left;
+	opacity: 1;
+}
+
+/* Petite flèche pointant vers l'élément cliqué */
+.popover-arrow {
+	position: absolute;
+	top: -8px;
+	left: 16px;
+	width: 16px;
+	height: 16px;
+	background: inherit;
+	transform: rotate(45deg);
+	border-left: 1px solid rgba(15, 23, 42, 0.06);
+	border-top: 1px solid rgba(15, 23, 42, 0.06);
+	box-shadow: -3px -3px 6px rgba(0,0,0,0.03);
+	border-radius: 2px;
+}
+
+/* Contenu interne */
+.popover-content {
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+/* Boutons */
+.popover-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	padding: 8px 10px;
+	border-radius: 6px;
+	border: none;
+	background: #3366ff;
+	color: #fff;
+	font-weight: 600;
+	cursor: pointer;
+	box-shadow: 0 4px 10px rgba(51, 102, 255, 0.12);
+	transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+
+.popover-btn:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 18px rgba(51, 102, 255, 0.14);
+	background: #254edb;
+}
+
+.popover .secondary-btn {
+	background: transparent;
+	color: #102a43;
+	border: 1px solid rgba(16, 42, 67, 0.06);
+	box-shadow: none;
+	font-weight: 500;
+	padding: 7px 9px;
+}
+
+.popover .secondary-btn:hover {
+	background: rgba(16,42,67,0.04);
+}
+
+.popover .danger-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 8px 10px;
+	border-radius: 6px;
+	border: none;
+	background: #ff4d4f;
+	color: #fff;
+	font-weight: 600;
+	cursor: pointer;
+	transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+
+.popover .danger-btn:hover {
+	transform: translateY(-2px);
+	background: #d93636;
+	box-shadow: 0 8px 18px rgba(217, 54, 54, 0.12);
+}
+
+/* si besoin, espacement entre boutons */
+.popover-content > *:not(:last-child) {
+	margin-bottom: 8px;
+}
+
+/* Responsive: s'assurer que le popover ne déborde pas de l'écran */
+@media (max-width: 480px) {
+	.popover {
+		min-width: 160px;
+	}
+	.popover-arrow { left: 12px; }
+}

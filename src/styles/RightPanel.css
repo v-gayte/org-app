@@ -1,0 +1,64 @@
+.right-panel {
+	width: 50%;
+	min-width: 320px;
+	background: linear-gradient(180deg,#ffffff,#fbfdff);
+	border-radius: 12px;
+	padding: 12px;
+	box-shadow: 0 8px 30px rgba(10,25,47,0.08);
+	border: 1px solid rgba(10,25,47,0.04);
+	display: flex;
+	flex-direction: column;
+	height: 88%;
+	overflow: hidden;
+	/* hauteur d'une heure (doit correspondre à JS hourHeight) */
+	--hour-height: 60px;
+}
+
+/* header */
+.rp-header { display:flex; justify-content:space-between; align-items:center; padding-bottom:8px; border-bottom:1px solid rgba(10,25,47,0.04); }
+.rp-header h2 { margin:0; font-size:1rem; color:#0b2540; text-transform:capitalize; }
+
+/* body scroll */
+.rp-body { flex:1; overflow:auto; padding:0 8px 8px 8px; box-sizing:border-box; min-height:0; }
+
+/* timeline wrapper */
+.rp-timeline-wrapper { display:flex; gap:8px; align-items:stretch; min-height:0; }
+
+/* labels */
+.rp-time-labels { width:56px; display:flex; flex-direction:column; }
+.rp-time-labels .rp-hour-label { height: var(--hour-height); line-height: var(--hour-height); padding-left:6px; box-sizing:border-box; color:#64748b; font-size:13px; }
+
+/* timeline area: hauteur calculée depuis la variable */
+.rp-timeline { position:relative; flex:1; border-left:1px solid rgba(16,42,67,0.04); background:linear-gradient(180deg, rgba(250,252,255,0.6), rgba(255,255,255,0.6)); box-sizing:border-box; height: calc(var(--hour-height) * 24); padding:0; }
+
+/* hour lines */
+.rp-grid-hour { position:absolute; left:0; right:0; border-top:1px dashed rgba(16,42,67,0.04); box-sizing:border-box; }
+
+/* event block */
+.rp-event-block {
+	position:absolute;
+	left:8px;
+	right:8px;
+	padding:6px 8px;
+	border-radius:8px;
+	border:1px solid rgba(0,0,0,0.06);
+	color:#fff;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	box-shadow:0 6px 20px rgba(10,25,47,0.12);
+	cursor:pointer;
+	overflow:hidden;
+	text-shadow:0 1px 0 rgba(0,0,0,0.15);
+	min-height:28px;
+}
+
+/* contrast override */
+.rp-event-block[data-contrast="dark"] { color:#071423; text-shadow:none; }
+
+/* sticky add button */
+.rp-actions { position:sticky; bottom:12px; display:flex; justify-content:flex-end; padding-top:8px; background:linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.95)); z-index:30; }
+.rp-add-btn { width:48px; height:48px; border-radius:999px; font-size:22px; display:inline-flex; align-items:center; justify-content:center; box-shadow:0 8px 20px rgba(51,102,255,0.12); }
+
+/* view/create styles (kept simple) */
+.rp-empty { color:#64748b; padding:16px; text-align:center; }
